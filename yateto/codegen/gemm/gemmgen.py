@@ -91,7 +91,10 @@ class GemmGen(object):
                                 m.size(), n.size(), k.size(),
                                 d.alpha, self._pointer(d.leftTerm, (m.start, k.start), d.transA), ldA,
                                 self._pointer(d.rightTerm, (k.start, n.start), d.transB), ldB,
-                                d.beta, self._pointer(d.result, (m.start, n.start), False), ldC))
+                                d.beta, self._pointer(d.result, (m.start, n.start), False), ldC,
+                                alignedA=d.alignedA,
+                                alignedC=d.alignedC,
+                                prefetchName=d.prefetchName))
 
     elif isinstance(self._gemm_cfg, GemmForge):
 
