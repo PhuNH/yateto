@@ -8,3 +8,7 @@ build
 
 *.swo
 *.swp
+examples/matmul/
+examples/minimal/
+examples/optimal_ind/
+examples/b_matmul*/
