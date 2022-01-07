@@ -60,7 +60,7 @@ def getCpu(architecture):
   
 def getAlignment(architecture):
   alignments = {
-      'noarch': 16,
+      'noarch': 32,
       'wsm': 16,
       'snb': 32,
       'hsw': 32,

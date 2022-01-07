@@ -117,7 +117,7 @@ def getArchitectureIdentifiedBy(ident):
 
   # NOTE: ibxsmm currently supports prefetch only for KNL kernels
   arch = {
-    'noarch': Architecture(name, precision, 16, False),
+    'noarch': Architecture(name, precision, 32, False),
     'wsm': Architecture(name, precision, 16, False),
     'snb': Architecture(name, precision, 32, False),
     'hsw': Architecture(name, precision, 32, False),

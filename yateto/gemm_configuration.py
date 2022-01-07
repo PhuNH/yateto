@@ -247,6 +247,7 @@ class DefaultGeneratorCollection(GeneratorCollection):
     eigen = Eigen(arch)
     forge = GemmForge(arch)
     defaults = {
+      'noarch': [],
       'snb' : [libxsmm, mkl, blis, eigen],
       'hsw' : [libxsmm, mkl, blis, eigen],
       'rome' : [libxsmm, blis, eigen],
