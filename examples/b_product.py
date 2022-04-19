@@ -18,21 +18,15 @@ def add_tensor(name, ind, size):
 def add_bench(g, descr, sizes):
   global _bench_no
 
-  Cind, Aind, Bind = descr.split('-')
+  Qind, tmp_ind, Find = descr.split('-')
   size = {k: int(s) for k,s in re.findall(r'([a-z]):([0-9]+)', sizes)}
 
-  A = add_tensor('A', Aind, size)
-  B = add_tensor('B', Bind, size)
-  C = add_tensor('C', Cind, size)
+  Q = add_tensor('Q', Qind, size)
+  tmp = add_tensor('tmp', tmp_ind, size)
+  F = add_tensor('F', Find, size)
 
-  g.add(sizes.translate(str.maketrans(':;', '__')), C[Cind] <= A[Aind] * B[Bind])
+  g.add(sizes.translate(str.maketrans(':;', '__')), Q[Qind] <= Q[Qind] + F[Find] * tmp[tmp_ind])
   _bench_no = _bench_no + 1
 
 def add(g):
-  add_bench(g, 'ij-ik-kj', 'i:32;j:32;k:32')
-  add_bench(g, 'ij-ik-kj', 'i:64;j:12;k:64')
-  add_bench(g, 'ij-ik-kj', 'i:64;j:32;k:64')
-  add_bench(g, 'ij-ik-kj', 'i:64;j:64;k:64')
-  add_bench(g, 'ij-ik-kj', 'i:128;j:128;k:128')
-  add_bench(g, 'ij-ik-kj', 'i:256;j:256;k:256')
-  add_bench(g, 'ij-ik-kj', 'i:512;j:512;k:512')
+  add_bench(g, 'xyzp-xyp-z', 'x:16;y:16;z:16;p:4')

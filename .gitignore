@@ -12,3 +12,5 @@ examples/matmul/
 examples/minimal/
 examples/optimal_ind/
 examples/b_matmul*/
+examples/b_log*/
+examples/b_product*/
